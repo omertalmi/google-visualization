@@ -1,9 +1,18 @@
 var target = document.querySelector('body');
 
+var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function () {
+        removeKnowledgeGraph();
+    });
+});
+
+var config = {attributes: true, childList: true, characterData: true, subtree: true};
+observer.observe(target, config);
+
 var addCluster = function () {
 
     if (document.getElementsByName("q")[1]) {
-        //var query = document.getElementsByName("q")[1].value;
+
         var query = document.getElementById("lst-ib").value;
         var newDiv = document.createElement('div');
         newDiv.id = 'cluster';
@@ -17,32 +26,25 @@ var addCluster = function () {
         injectToDiv += '<input class="cluster_input" type="checkbox" checked disabled id="all_clusters"/>';
         injectToDiv += '<ol class="inside_tree">';
         var clusters_html = add_clusters_html(query);
-        //if (query !== clusters_html.window_location){
-        //    window.location = clusters_html.window_location;
-        //}
+
         injectToDiv += clusters_html.clusters_html;
-        //{
-        //	injectToDiv += '<li class="file"><a href="https://www.google.com/search?q=David+Ben+Gurion">David Ben Gurion</a></li>';
-        //	injectToDiv += '<li class="file"><a href="https://www.google.com/search?q=Ben+Gurion+Airport"">Ben Gurion Airport</a></li>';
-        //	injectToDiv += '<li class="file"><a href="https://www.google.com/search?q=Ben+Gurion+University"">Ben Gurion University</a></li></ol>';
-        //}
 
         injectToDiv += '</ol>';
         injectToDiv += '</li>';
         injectToDiv += '</ol>';
         injectToDiv += '<div class="divider"></div>';
+
         if (clusters_html != "") {
             newDiv.innerHTML = injectToDiv;
             document.getElementById('top_nav').appendChild(newDiv);
         }
+
         document.getElementById('rcnt').style.marginLeft = "230px";
         document.getElementById('center_col').style.marginLeft = "10px";
-
-        //var all_clusters = document.getElementsByClassName("cluster").style.background.src = chrome.extension.getURL("css_tree/folder.png");
     }
 };
 
-var removeRhs = function () {
+var removeKnowledgeGraph = function () {
 
     // Default Knowledge graph
     if (document.getElementById("rhs_block")) {
@@ -53,7 +55,7 @@ var removeRhs = function () {
         document.getElementById("botabar").style.display = "none";
     }
 
-    // TODO: check those - remove elements
+    // remove Knowledge Graph classes
     var class1 = document.getElementsByClassName("kp-blk _Rqb _RJe");
     var class2 = document.getElementsByClassName("_Xhb");
     var class3 = document.getElementsByClassName("g mnr-c g-blk");
@@ -75,18 +77,7 @@ var removeRhs = function () {
     }
 };
 
-var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function () {
-        removeRhs();
-    });
-});
 
-//document.getElementById("lst-ib").addEventListener("onkeyup", function () {
-//    removeRhs();
-//}, false);
-
-var config = {attributes: true, childList: true, characterData: true, subtree: true};
-observer.observe(target, config);
 
 
 function add_clusters_html(q) {
@@ -97,7 +88,8 @@ function add_clusters_html(q) {
     var window_location;
     // run all clusters
     for (var key in clusters) {
-        var cluster_group = clusters[key];
+        var cluster_group;
+        cluster_group = clusters[key];
         for (var i = 0; i < cluster_group.length; i++) {
             // find selected cluster
             if (q.toLowerCase() === cluster_group[i].toLowerCase()) {
@@ -107,7 +99,6 @@ function add_clusters_html(q) {
                 if (q.toLowerCase() === cluster_group[0].toLowerCase()) {
                     window_location = "https://www.google.com/search?q=" + cluster_group[1];
                     window.location.href = window_location;
-                    //window.location.replace(window_location);
                 }
                 // add all cluster links in this group, first OR user selected cluster will be selected
                 for (var j = 1; j < cluster_group.length; j++) {
@@ -130,7 +121,7 @@ function add_clusters_html(q) {
     return {clusters_html: clusters_html, window_location: window_location};
 }
 
-// cluster name is not important - only the strings array
+// cluster key is NOT important - only the strings array
 var clusters =
 {
     //"BBC": ["BBC", "BBC Broadcasting Company", "BBC World News", "BBC News Africa", "BBC News Headlines"],
