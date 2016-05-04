@@ -1,0 +1,128 @@
+/* CSS Tree menu styles */
+ol.tree {
+    padding: 0 0 0 10px;
+    width: 230px;
+}
+
+ol.inside_tree {
+    padding: 7px 0 0 35px;
+    width: 215px;
+}
+
+li.cluster, li.li_cluster {
+    position: relative;
+    margin-left: -15px;
+    list-style: none;
+    line-height: 18px;
+}
+
+li.cluster {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    margin-left: -1px !important;
+}
+
+li.cluster a.a_cluster {
+    background: url("chrome-extension://__MSG_@@extension_id__/css_tree/folder.png") 0 0 no-repeat;
+    color: #4C4C4C;
+    padding-left: 21px;
+    text-decoration: none;
+    display: block;
+}
+
+li.cluster a.a_cluster_selected {
+    background: blue url("chrome-extension://__MSG_@@extension_id__/css_tree/folder.png") no-repeat 0 0;
+    color: white;
+    padding-left: 21px;
+    text-decoration: none;
+    display: block;
+}
+
+li.li_cluster input.cluster_input {
+    position: absolute;
+    left: 0;
+    margin-left: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
+    top: 0;
+}
+
+/*toggle-small-expand*/
+/*li input + ol {*/
+/*background: url(toggle-small-expand.png) 40px 0 no-repeat;*/
+/*margin: -0.938em 0 0 -44px; !* 15px *!*/
+/*height: 1em;*/
+/*}*/
+
+li.cluster input.cluster_input + ol.tree > li.cluster {
+    display: none;
+    margin-left: -14px !important;
+    padding-left: 1px;
+}
+
+li.li_cluster label.label_cluster {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    background: url("chrome-extension://__MSG_@@extension_id__/css_tree/folder.png") 15px 1px no-repeat;
+    /*main cluster not clickable*/
+    /*cursor: pointer;*/
+    display: block;
+    padding-left: 35px;
+    line-height: 16px;
+}
+
+li.li_cluster input.cluster_input:checked + ol.tree {
+    /*background: url(toggle-small.png) 40px 5px no-repeat;*/
+    margin: -1.25em 0 0 -44px; /* 20px */
+    padding: 1.563em 0 0 80px;
+    height: auto;
+}
+
+li.li_cluster input.cluster_input:checked + ol.tree > li.cluster {
+    display: block;
+    margin: 0 0 0.125em; /* 2px */
+}
+
+li.li_cluster input.cluster_input:checked + ol.tree > li.cluster:last-child {
+    margin: 0 0 0.063em; /* 1px */
+}
+
+li.cluster::before {
+    position: absolute;
+    left: -15px;
+    top: -8px;
+    /*top: 0;*/
+    content: '';
+    display: block;
+    border-left: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    /*border-left: 2px solid #808080;*/
+    /*border-bottom: 2px solid #808080;*/
+    height: 1.2em;
+    /*height: 30px;*/
+    width: 10px;
+}
+
+/*ol li::after {*/
+/*position: absolute;*/
+/*left: -15px;*/
+/*bottom: -7px;*/
+/*content: '';*/
+/*display: block;*/
+/*border-left: 4px solid #ddd;*/
+/*height: 100%;*/
+/*}*/
+
+.divider {
+    position: absolute;
+    left: 245px;
+    top: 0;
+    bottom: 0;
+    height: 1000px;
+    /*margin-top: 50px;*/
+    /*bottom: 10%;*/
+    /*border-left: 1px solid;*/
+    width: 1px;
+    border-left: 1px dotted #c0c0c0;
+}

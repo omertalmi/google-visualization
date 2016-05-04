@@ -1,0 +1,22 @@
+/* Just some base styles not needed for example to function */
+
+
+	
+/* CSS Tree menu styles */
+
+li.talmaypaz
+{
+	position: relative; 
+	margin-left: -15px;
+	list-style: none;
+	height: 20px;
+	font-weight: bold;
+	width:200px 
+}
+li.talmaypaz a
+{
+	background: url(http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/16/Folder-icon.png) 0 0 no-repeat !important;
+	padding-left: 21px;
+	text-decoration: none;
+	display: block;	
+}
