@@ -1,13 +1,60 @@
 var target = document.querySelector('body');
 
+var ex_state = "";
+getState();
+
 var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function () {
-        removeKnowledgeGraph();
+        switch (ex_state) {
+
+            case 'list':
+                removeKnowledgeGraph();
+                break;
+
+            case 'knowledge':
+                break;
+
+
+            case 'clustering':
+                removeKnowledgeGraph();
+                if (document.getElementById("rcnt")) {
+                    if (!document.getElementById("cluster")) {
+                        addCluster();
+                    }
+                }
+                break;
+        }
+
     });
 });
 
 var config = {attributes: true, childList: true, characterData: true, subtree: true};
 observer.observe(target, config);
+
+chrome.extension.onMessage.addListener(function (message, sender, sendResponse) {
+    switch (message.type) {
+        case 'ex_state':
+            //alert("message listener : " + message.state);
+            getState();
+    }
+
+    location.reload();
+
+});
+
+function getState() {
+    chrome.storage.local.get('ex_state', function (result) {
+        console.log(result);
+        if (!result.ex_state) {
+            ex_state = 'knowledge';
+            return;
+        }
+
+        ex_state = result.ex_state;
+        //alert('local storage state : ' + ex_state);
+    });
+}
+
 
 var addCluster = function () {
 
@@ -70,14 +117,7 @@ var removeKnowledgeGraph = function () {
         }
     }
 
-    if (document.getElementById("rcnt")) {
-        if (!document.getElementById("cluster")) {
-            addCluster();
-        }
-    }
 };
-
-
 
 
 function add_clusters_html(q) {
@@ -127,11 +167,10 @@ var clusters =
     //"BBC": ["BBC", "BBC Broadcasting Company", "BBC World News", "BBC News Africa", "BBC News Headlines"],
     //"Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"],
     "Microsoft Israel": ["Microsoft Israel", "Microsoft Israel Careers", "Microsoft Israel Events", "Microsoft Israel Phone Number", "IBM Israel"],
-    "Bank Of India": ["Bank Of India" ,"Bank Of India Recruitment", "Bank Of India IFSC Code", "Bank of India - US Operations"],
-    "Tel-Aviv Municipality": ["Tel Aviv Municipality", "Tel Aviv Municipality Parking" ,"Tel Aviv Municipality Phone Number", "Tel Aviv Municipality Arnona", "Tel Aviv Municipality Address"],
+    "Bank Of India": ["Bank Of India", "Bank Of India Recruitment", "Bank Of India IFSC Code", "Bank of India - US Operations"],
+    "Tel-Aviv Municipality": ["Tel Aviv Municipality", "Tel Aviv Municipality Parking", "Tel Aviv Municipality Phone Number", "Tel Aviv Municipality Arnona", "Tel Aviv Municipality Address"],
     "Gephi": ["Gephi Tutorial", "Gephi Download", "Gephi Api", "Gephi Java"],
     "Sony Playstation 4": ["Sony Playstation 4", "Buy Sony Playstation 4", "Sony Playstation 4 Price", "Sony Playstation 4 Amazon", "Sony Playstation 4 vs Xbox"],
     "John Travolta": ["John Travolta1", "John Travolta", "John Travolta", "John Travolta"],
     "Data Mining": ["Data Mining", "Data Mining Applications", "Data Mining Algorithms", "Data Science", "Machine Learning", "Big Data", "Business Intelligence", "Data Mining Amazon"]
 };
-
