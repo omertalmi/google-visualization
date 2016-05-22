@@ -1,5 +1,5 @@
 window.onload = function () {
-
+    
     // get all pop-up clicks and send message to background.js
 
     document.getElementById("list").onclick = function () {
@@ -22,6 +22,5 @@ window.onload = function () {
             state: 'clustering'
         });
     };
-
 };
 
