@@ -38,7 +38,8 @@ chrome.extension.onMessage.addListener(function (message, sender, sendResponse) 
             getState();
     }
 
-    location.reload();
+    //OPTIONAL - Refresh on state change
+    //location.reload();
 
 });
 
