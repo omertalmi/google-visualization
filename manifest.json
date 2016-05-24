@@ -4,9 +4,14 @@
   "short_name": "Google Visuals",
   "description": "Select your Google's results page visualization",
   "version": "0.0.8",
+  "icons": {
+    "16": "resources/icon-16.png",
+    "48": "resources/icon-48.png",
+    "128": "resources/icon-128.png"
+  },
   "browser_action": {
     "default_title": "Google Visualization",
-    "default_icon": "g_icon.png",
+    "default_icon": "resources/icon-48.png",
     "default_popup": "popup.html"
   },
   "background": {
