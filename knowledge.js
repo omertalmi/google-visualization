@@ -1,6 +1,7 @@
 var target = document.querySelector('body');
 
-var ex_state = "";
+var ex_state;
+var cluster_key;
 getState();
 
 var observer = new MutationObserver(function (mutations) {
@@ -38,7 +39,7 @@ chrome.extension.onMessage.addListener(function (message, sender, sendResponse) 
     }
 
     //OPTIONAL - Refresh on state change
-    //location.reload();
+    location.reload();
 
 });
 
@@ -61,6 +62,16 @@ var addCluster = function () {
     if (document.getElementsByName("q")[1]) {
 
         var query = document.getElementById("lst-ib").value;
+
+        // exits function if clusters is not exists
+        cluster_key = getClusterGroup(query);
+        if (!cluster_key) {
+            if (document.getElementById("cluster")) {
+                document.getElementById("cluster").style.display = "none";
+            }
+            return;
+        }
+
         var newDiv = document.createElement('div');
         newDiv.id = 'cluster';
         newDiv.style.width = "245px";
@@ -119,6 +130,21 @@ var removeKnowledgeGraph = function () {
 
 };
 
+function getClusterGroup(query) {
+
+    for (var key in clusters) {
+        var cluster_group;
+        cluster_group = clusters[key];
+        for (var i = 0; i < cluster_group.length; i++) {
+            // find selected cluster
+            if (query.toLowerCase() === cluster_group[i].toLowerCase()) {
+                return key;
+            }
+        }
+    }
+    return null;
+}
+
 
 function add_clusters_html(q) {
 
@@ -165,12 +191,11 @@ function add_clusters_html(q) {
 var clusters =
 {
     //"BBC": ["BBC", "BBC Broadcasting Company", "BBC World News", "BBC News Africa", "BBC News Headlines"],
-    //"Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"],
+    "Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"],
     "Microsoft Israel": ["Microsoft Israel", "Microsoft Israel Careers", "Microsoft Israel Events", "Microsoft Israel Phone Number", "IBM Israel"],
     "Bank Of India": ["Bank Of India", "Bank Of India Recruitment", "Bank Of India IFSC Code", "Bank of India - US Operations"],
     "Tel-Aviv Municipality": ["Tel Aviv Municipality", "Tel Aviv Municipality Parking", "Tel Aviv Municipality Phone Number", "Tel Aviv Municipality Arnona", "Tel Aviv Municipality Address"],
     "Gephi": ["Gephi Tutorial", "Gephi Download", "Gephi Api", "Gephi Java"],
     "Sony Playstation 4": ["Sony Playstation 4", "Buy Sony Playstation 4", "Sony Playstation 4 Price", "Sony Playstation 4 Amazon", "Sony Playstation 4 vs Xbox"],
-    "John Travolta": ["John Travolta1", "John Travolta", "John Travolta", "John Travolta"],
     "Data Mining": ["Data Mining", "Data Mining Applications", "Data Mining Algorithms", "Data Science", "Machine Learning", "Big Data", "Business Intelligence", "Data Mining Amazon"]
 };
