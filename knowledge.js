@@ -14,7 +14,6 @@ var observer = new MutationObserver(function (mutations) {
             case 'knowledge':
                 break;
 
-
             case 'clustering':
                 removeKnowledgeGraph();
                 if (document.getElementById("rcnt")) {

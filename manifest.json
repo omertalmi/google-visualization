@@ -1,26 +1,40 @@
 {
   "manifest_version": 2,
-
-  "name": "Google visualization v2",
-  "description": "This extension will hide the knowledge graph",
-  "version": "1.0",
+  "name": "Google Visualization",
+  "short_name": "Google Visuals",
+  "description": "Select your Google's results page visualization",
+  "version": "0.0.8",
   "browser_action": {
-    "default_title": "That's the tool tip",
-    "default_icon": "icon.png",
+    "default_title": "Google Visualization",
+    "default_icon": "g_icon.png",
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "background.js"
+    ],
     "persistent": false
   },
-"content_scripts": [{
-      "matches": ["https://*/*"],
-      "js": ["knowledge.js"],
-	  "css": ["styles3.css"]
-    }],
-  "permissions": [
-    "tabs", "http://*/*", "https://*/*", "storage"
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "js": [
+        "knowledge.js"
+      ],
+      "css": [
+        "styles3.css"
+      ]
+    }
   ],
-  "web_accessible_resources": ["css_tree/folder.png"]
-  
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "storage"
+  ],
+  "web_accessible_resources": [
+    "css_tree/folder.png"
+  ]
 }

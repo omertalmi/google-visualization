@@ -1,5 +1,5 @@
 window.onload = function () {
-    
+
     // get all pop-up clicks and send message to background.js
 
     document.getElementById("list").onclick = function () {
@@ -7,6 +7,7 @@ window.onload = function () {
             type: 'ex_state',
             state: 'list'
         });
+        window.close();
     };
 
     document.getElementById("knowledge").onclick = function () {
@@ -14,6 +15,7 @@ window.onload = function () {
             type: 'ex_state',
             state: 'knowledge'
         });
+        window.close();
     };
 
     document.getElementById("clustering").onclick = function () {
@@ -21,6 +23,7 @@ window.onload = function () {
             type: 'ex_state',
             state: 'clustering'
         });
+        window.close();
     };
 };
 
