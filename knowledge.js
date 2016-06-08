@@ -63,6 +63,8 @@ var addCluster = function () {
 
         var query = document.getElementById("lst-ib").value;
 
+        //getClustersApi(query);
+
         // exits function if clusters is not exists
         cluster_key = getClusterGroup(query);
         if (!cluster_key) {
@@ -187,15 +189,24 @@ function add_clusters_html(q) {
     return {clusters_html: clusters_html, window_location: window_location};
 }
 
+
 // cluster key is NOT important - only the strings array
+// the query is the first string in the array
 var clusters =
 {
-    //"BBC": ["BBC", "BBC Broadcasting Company", "BBC World News", "BBC News Africa", "BBC News Headlines"],
-    "Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"],
-    "Microsoft Israel": ["Microsoft Israel", "Microsoft Israel Careers", "Microsoft Israel Events", "Microsoft Israel Phone Number", "IBM Israel"],
+    "Microsoft": ["Microsoft", "Microsoft Israel", "Microsoft Israel Careers", "Microsoft Israel Events", "Microsoft Israel Phone Number", "IBM Israel"],
     "Bank Of India": ["Bank Of India", "Bank Of India Recruitment", "Bank Of India IFSC Code", "Bank of India - US Operations"],
-    "Tel-Aviv Municipality": ["Tel Aviv Municipality", "Tel Aviv Municipality Parking", "Tel Aviv Municipality Phone Number", "Tel Aviv Municipality Arnona", "Tel Aviv Municipality Address"],
-    "Gephi": ["Gephi Tutorial", "Gephi Download", "Gephi Api", "Gephi Java"],
-    "Sony Playstation 4": ["Sony Playstation 4", "Buy Sony Playstation 4", "Sony Playstation 4 Price", "Sony Playstation 4 Amazon", "Sony Playstation 4 vs Xbox"],
-    "Data Mining": ["Data Mining", "Data Mining Applications", "Data Mining Algorithms", "Data Science", "Machine Learning", "Big Data", "Business Intelligence", "Data Mining Amazon"]
+    "Big Ben address": ["Big Ben address", "Big Ben London", "Big Ben location", "Big Ben time", "Big Ben History"],
+    "Temperature in Amsterdam": ["Temperature in Amsterdam", "Temperature in Amsterdam in august", "Temperature in Amsterdam today", "Temperature in Amsterdam in april", "Amsterdam Weather", "Amsterdam Weather august 2015"],
+    "New York vs. London": ["New York vs. London", "London vs New York size", "London vs New York population", "London vs New York crime", "London vs New York financial"],
+    "How to be in shape for track?": ["How to be in shape for track?", "Get in shape for track", "shape song", "shape song video", "3d shape song"],
+    "Laundry services in Budapest": ["Laundry services in Budapest", "types of laundry services", "laundry services prices", "laundry services online", "laundry services in hotels", "laundry services names"],
+    "LG TV": ["LG TV", "LG TV price", "LG TV models", "LG Smart TV", "LG 3D TV"],
+    "Topics in Physiology": ["Topics in Physiology", "Research Topics in Physiology", "Human Physiology", "Anatomy Physiology", "Physiology Research"],
+    "Data Mining": ["Data Mining", "Data Mining Applications", "Data Mining Algorithms", "Data Science", "Machine Learning", "Big Data", "Business Intelligence", "Data Mining Amazon"],
+    "Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"]
+    //"BBC": ["BBC", "BBC Broadcasting Company", "BBC World News", "BBC News Africa", "BBC News Headlines"],
+    //"Tel-Aviv Municipality": ["Tel Aviv Municipality", "Tel Aviv Municipality Parking", "Tel Aviv Municipality Phone Number", "Tel Aviv Municipality Arnona", "Tel Aviv Municipality Address"],
+    //"Gephi": ["Gephi Tutorial", "Gephi Download", "Gephi Api", "Gephi Java"],
+    //"Sony Playstation 4": ["Sony Playstation 4", "Buy Sony Playstation 4", "Sony Playstation 4 Price", "Sony Playstation 4 Amazon", "Sony Playstation 4 vs Xbox"],
 };
