@@ -204,7 +204,8 @@ var clusters =
     "LG TV": ["LG TV", "LG TV price", "LG TV models", "LG Smart TV", "LG 3D TV"],
     "Topics in Physiology": ["Topics in Physiology", "Research Topics in Physiology", "Human Physiology", "Anatomy Physiology", "Physiology Research"],
     "Data Mining": ["Data Mining", "Data Mining Applications", "Data Mining Algorithms", "Data Science", "Machine Learning", "Big Data", "Business Intelligence", "Data Mining Amazon"],
-    "Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"]
+    "Ben Gurion": ["Ben Gurion", "David Ben Gurion", "Ben Gurion Airport", "Ben Gurion University"],
+    "AngularJS": ["AngularJS", "AngularJS Tutorial", "AngularJS Examples", "AngularJS vs jQuery", "AngularJS vs backbone", "AngularJS vs knockout"]
     //"BBC": ["BBC", "BBC Broadcasting Company", "BBC World News", "BBC News Africa", "BBC News Headlines"],
     //"Tel-Aviv Municipality": ["Tel Aviv Municipality", "Tel Aviv Municipality Parking", "Tel Aviv Municipality Phone Number", "Tel Aviv Municipality Arnona", "Tel Aviv Municipality Address"],
     //"Gephi": ["Gephi Tutorial", "Gephi Download", "Gephi Api", "Gephi Java"],
