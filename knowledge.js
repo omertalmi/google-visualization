@@ -120,6 +120,7 @@ var removeKnowledgeGraph = function () {
     var class2 = document.getElementsByClassName("_Xhb");
     var class3 = document.getElementsByClassName("g mnr-c g-blk");
     var class4 = document.getElementsByClassName("g tpo knavi obcontainer mod"); //temperature
+    var class4 = document.getElementsByClassName("_M6k vk_c"); //address
 
     var kgArray = [];
     kgArray = kgArray.concat(class1, class2, class3, class4);
@@ -139,7 +140,7 @@ function getClusterGroup(query) {
         cluster_group = clusters[key];
         for (var i = 0; i < cluster_group.length; i++) {
             // find selected cluster
-            if (query.toLowerCase() === cluster_group[i].toLowerCase()) {
+            if (simpleString(query) === simpleString(cluster_group[i])) {
                 return key;
             }
         }
@@ -160,17 +161,17 @@ function add_clusters_html(q) {
         cluster_group = clusters[key];
         for (var i = 0; i < cluster_group.length; i++) {
             // find selected cluster
-            if (q.toLowerCase() === cluster_group[i].toLowerCase()) {
+            if (simpleString(q) == simpleString(cluster_group[i])) {
                 found = true;
 
                 // set first cluster selected - (move to first cluster search)
-                if (q.toLowerCase() === cluster_group[0].toLowerCase()) {
+                if (simpleString(q) == simpleString(cluster_group[0])) {
                     window_location = "https://www.google.com/search?q=" + cluster_group[1];
                     window.location.href = window_location;
                 }
                 // add all cluster links in this group, first OR user selected cluster will be selected
                 for (var j = 1; j < cluster_group.length; j++) {
-                    if (q.toLowerCase() === cluster_group[j].toLowerCase()) {
+                    if (simpleString(q) == simpleString(cluster_group[j])) {
                         clusters_html += '<li class="cluster"><a class="a_cluster_selected" href="https://www.google.com/search?q=' + cluster_group[j] + '">' + cluster_group[j] + '</a></li>';
                     } else {
                         clusters_html += '<li class="cluster"><a class="a_cluster" href="https://www.google.com/search?q=' + cluster_group[j] + '">' + cluster_group[j] + '</a></li>';
@@ -190,6 +191,12 @@ function add_clusters_html(q) {
 }
 
 
+function simpleString(str){
+    //console.log(str.trim().split(' ').join('').toLowerCase());
+    return str.trim().split(' ').join('').toLowerCase();
+}
+
+
 // cluster key is NOT important - only the strings array
 // the query is the first string in the array
 var clusters =
@@ -199,8 +206,8 @@ var clusters =
     "Big Ben address": ["Big Ben address", "Big Ben London", "Big Ben location", "Big Ben time", "Big Ben History"],
     "Temperature in Amsterdam": ["Temperature in Amsterdam", "Temperature in Amsterdam in august", "Temperature in Amsterdam today", "Temperature in Amsterdam in april", "Amsterdam Weather", "Amsterdam Weather august 2015"],
     "New York vs. London": ["New York vs. London", "London vs New York size", "London vs New York population", "London vs New York crime", "London vs New York financial"],
-    "How to be in shape for track?": ["How to be in shape for track?", "Get in shape for track", "shape song", "shape song video", "3d shape song"],
-    "Laundry services in Budapest": ["Laundry services in Budapest", "types of laundry services", "laundry services prices", "laundry services online", "laundry services in hotels", "laundry services names"],
+    "How to be in shape for track?": ["How to be in shape for track?", "Get in shape", "Home Exercise", "shape song", "shape song video", "3d shape song"],
+    "Laundry services in Budapest": ["Laundry services in Budapest", "Laundry Services Prices Budapest", "Laundry Services Online Budapest", "Laundry Services in Hotels Budapest", "Laundry Services Names budapest"],
     "LG TV": ["LG TV", "LG TV price", "LG TV models", "LG Smart TV", "LG 3D TV"],
     "Topics in Physiology": ["Topics in Physiology", "Research Topics in Physiology", "Human Physiology", "Anatomy Physiology", "Physiology Research"],
     "Data Mining": ["Data Mining", "Data Mining Applications", "Data Mining Algorithms", "Data Science", "Machine Learning", "Big Data", "Business Intelligence", "Data Mining Amazon"],
