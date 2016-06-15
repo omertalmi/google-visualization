@@ -120,10 +120,10 @@ var removeKnowledgeGraph = function () {
     var class2 = document.getElementsByClassName("_Xhb");
     var class3 = document.getElementsByClassName("g mnr-c g-blk");
     var class4 = document.getElementsByClassName("g tpo knavi obcontainer mod"); //temperature
-    var class4 = document.getElementsByClassName("_M6k vk_c"); //address
+    var class5 = document.getElementsByClassName("_M6k vk_c"); //address
 
     var kgArray = [];
-    kgArray = kgArray.concat(class1, class2, class3, class4);
+    kgArray = kgArray.concat(class1, class2, class3, class4, class5);
 
     for (var i = 0; i < kgArray.length; i++) {
         for (var j = 0; j < kgArray[i].length; j++) {
