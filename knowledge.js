@@ -206,7 +206,7 @@ var clusters =
     "Big Ben address": ["Big Ben address", "Big Ben London", "Big Ben location", "Big Ben time", "Big Ben History"],
     "Temperature in Amsterdam": ["Temperature in Amsterdam", "Temperature in Amsterdam in august", "Temperature in Amsterdam today", "Temperature in Amsterdam in april", "Amsterdam Weather", "Amsterdam Weather august 2015"],
     "New York vs London": ["New York vs London", "London vs New York size", "London vs New York population", "London vs New York crime", "London vs New York financial"],
-    "How to be in shape for track?": ["How to be in shape for track?", "Get in shape", "Home Exercise", "shape song", "shape song video", "3d shape song"],
+    "How to be in shape for track": ["How to be in shape for track", "Get in shape", "Home Exercise", "shape song", "shape song video", "3d shape song"],
     "Laundry services in Budapest": ["Laundry services in Budapest", "Laundry Services Prices Budapest", "Laundry Services Online Budapest", "Laundry Services in Hotels Budapest", "Laundry Services Names budapest"],
     "LG TV": ["LG TV", "LG TV price", "LG TV models", "LG Smart TV", "LG 3D TV"],
     "Topics in Physiology": ["Topics in Physiology", "Research Topics in Physiology", "Human Physiology", "Anatomy Physiology", "Physiology Research"],
